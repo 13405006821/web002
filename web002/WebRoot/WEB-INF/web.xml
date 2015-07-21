@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee   http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	
+	<!-- 加载spring配置文件 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/classes/applicationContext.xml
+		</param-value>
+	</context-param>
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+
+	<!-- 设置字符集 -->
+	<filter>
+		<filter-name>SetCharacterEncoding</filter-name>
+		<filter-class>
+			luu.filter.SetCharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>GBK</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>SetCharacterEncoding</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- Servlet -->
+	<!-- 手动控制 -->
+	<servlet>
+	    <servlet-name>ControlServlet</servlet-name>
+	    <servlet-class>luu.ControlServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>ControlServlet</servlet-name>
+	    <url-pattern>/servlet/ControlServlet</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 获取配置列表到cartList.jsp页面 -->
+	<servlet>
+	    <servlet-name>CartListServlet</servlet-name>
+	    <servlet-class>luu.CartListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>CartListServlet</servlet-name>
+	    <url-pattern>/servlet/CartListServlet</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 获取配置列表到sourceList.jsp页面 -->
+	<servlet>
+	    <servlet-name>SourceListServlet</servlet-name>
+	    <servlet-class>luu.SourceListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>SourceListServlet</servlet-name>
+	    <url-pattern>/servlet/SourceListServlet</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 跳转到提交到PHP页面 -->
+	<servlet>
+	    <servlet-name>AddCartServlet</servlet-name>
+	    <servlet-class>luu.AddCartServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>AddCartServlet</servlet-name>
+	    <url-pattern>/servlet/AddCartServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>AddSourceServlet</servlet-name>
+	    <servlet-class>luu.AddSourceServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>AddSourceServlet</servlet-name>
+	    <url-pattern>/servlet/AddSourceServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>BatchCartServlet</servlet-name>
+	    <servlet-class>luu.BatchCartServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>BatchCartServlet</servlet-name>
+	    <url-pattern>/servlet/BatchCartServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>BatchSourceServlet</servlet-name>
+	    <servlet-class>luu.BatchSourceServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>BatchSourceServlet</servlet-name>
+	    <url-pattern>/servlet/BatchSourceServlet</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 获取配置信息到updatePz.jsp页面 -->
+	<servlet>
+	    <servlet-name>PzxxServlet</servlet-name>
+	    <servlet-class>luu.PzxxServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>PzxxServlet</servlet-name>
+	    <url-pattern>/servlet/PzxxServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>UpdatePzServlet</servlet-name>
+	    <servlet-class>luu.UpdatePzServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>UpdatePzServlet</servlet-name>
+	    <url-pattern>/servlet/UpdatePzServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>LogoutServlet</servlet-name>
+	    <servlet-class>luu.LogoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>LogoutServlet</servlet-name>
+	    <url-pattern>/servlet/LogoutServlet</url-pattern>
+	</servlet-mapping>
+	
+  	<!-- 欢迎页面 --> 
+  	<welcome-file-list>
+		<welcome-file>/index.jsp</welcome-file>
+	</welcome-file-list>
+  	 
+	<session-config>   
+   		<session-timeout>20</session-timeout>   
+	</session-config>  
+</web-app>
+
